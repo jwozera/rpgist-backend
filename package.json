@@ -15,9 +15,6 @@
     "db:seed": "sequelize db:seed:all --config sequelize.config.js",
     "db:seed:undo": "sequelize db:seed:undo:all --config sequelize.config.js"
   },
-  "engines": {
-    "node": "24"
-  },
   "license": "MIT",
   "dependencies": {
     "bcrypt": "^5.1.1",
