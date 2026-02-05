@@ -1,3 +1,4 @@
+import 'pg';
 import { Sequelize } from 'sequelize';
 
 import { getDatabaseConfig } from '../config/database';
