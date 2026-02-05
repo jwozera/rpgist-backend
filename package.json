@@ -20,14 +20,19 @@
   },
   "license": "MIT",
   "dependencies": {
+    "@eslint/config-array": "^0.23.0",
+    "@eslint/object-schema": "^3.0.0",
     "bcrypt": "^5.1.1",
     "dotenv": "^16.4.1",
     "express": "^4.19.2",
+    "glob": "^10.5.0",
     "jsonwebtoken": "^9.0.2",
     "pg": "^8.18.0",
     "pg-hstore": "^2.3.4",
+    "rimraf": "^5.0.10",
     "sequelize": "^6.37.1",
-    "swagger-ui-express": "^5.0.1"
+    "swagger-ui-express": "^5.0.1",
+    "tar": "^7.5.7"
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.2",
@@ -37,7 +42,7 @@
     "@types/swagger-ui-express": "^4.1.6",
     "@typescript-eslint/eslint-plugin": "^6.19.1",
     "@typescript-eslint/parser": "^6.19.1",
-    "eslint": "8.56.0",
+    "eslint": "^9.39.2",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-import": "^2.29.1",
     "sequelize-cli": "^6.6.2",
