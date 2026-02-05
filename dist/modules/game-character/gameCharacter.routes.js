@@ -1,0 +1,14 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const auth_middleware_1 = require("../auth/auth.middleware");
+const gameCharacter_controller_1 = require("./gameCharacter.controller");
+const router = (0, express_1.Router)();
+router.use(auth_middleware_1.authenticate);
+router.post('/', (req, res, next) => gameCharacter_controller_1.gameCharacterController.requestJoin(req, res, next));
+router.get('/', (req, res, next) => gameCharacter_controller_1.gameCharacterController.list(req, res, next));
+router.get('/:id', (req, res, next) => gameCharacter_controller_1.gameCharacterController.getById(req, res, next));
+router.post('/:id/approve', (req, res, next) => gameCharacter_controller_1.gameCharacterController.approve(req, res, next));
+router.post('/:id/reject', (req, res, next) => gameCharacter_controller_1.gameCharacterController.reject(req, res, next));
+router.patch('/:id/state', (req, res, next) => gameCharacter_controller_1.gameCharacterController.updateState(req, res, next));
+exports.default = router;

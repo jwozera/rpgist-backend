@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const character_controller_1 = require("./character.controller");
+const auth_middleware_1 = require("../auth/auth.middleware");
+const router = (0, express_1.Router)();
+router.use(auth_middleware_1.authenticate);
+router.get('/', (req, res, next) => character_controller_1.characterController.list(req, res, next));
+router.get('/:id', (req, res, next) => character_controller_1.characterController.getById(req, res, next));
+router.post('/', (req, res, next) => character_controller_1.characterController.create(req, res, next));
+router.patch('/:id', (req, res, next) => character_controller_1.characterController.patch(req, res, next));
+router.delete('/:id', (req, res, next) => character_controller_1.characterController.remove(req, res, next));
+exports.default = router;

@@ -1,0 +1,12 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const authorization_1 = require("../../shared/middleware/authorization");
+const user_controller_1 = require("./user.controller");
+const router = (0, express_1.Router)();
+router.use(authorization_1.requireAuth);
+const ensureSelf = (0, authorization_1.requireSelfUser)((req) => req.userId);
+router.get('/me', ensureSelf, (req, res, next) => user_controller_1.userController.me(req, res, next));
+router.patch('/me', ensureSelf, (req, res, next) => user_controller_1.userController.updateMe(req, res, next));
+router.delete('/me', ensureSelf, (req, res, next) => user_controller_1.userController.deleteMe(req, res, next));
+exports.default = router;

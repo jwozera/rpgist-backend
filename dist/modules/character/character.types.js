@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.isValidEnhancementType = exports.isValidSkillCategory = exports.isValidAttribute = void 0;
+const character_enums_1 = require("./character.enums");
+const isValidAttribute = (value) => character_enums_1.ATTRIBUTE_TYPES.includes(value);
+exports.isValidAttribute = isValidAttribute;
+const isValidSkillCategory = (value) => character_enums_1.SKILL_CATEGORIES.includes(value);
+exports.isValidSkillCategory = isValidSkillCategory;
+const isValidEnhancementType = (value) => character_enums_1.ENHANCEMENT_TYPES.includes(value);
+exports.isValidEnhancementType = isValidEnhancementType;
