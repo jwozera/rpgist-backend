@@ -12,9 +12,14 @@ async function start(): Promise<void> {
     await sequelize.authenticate();
     console.log('Database connection established successfully');
 
-    app.listen(port, () => {
-      console.log(`Server is running on port ${port}`);
-    });
+    if (!process.env.VERCEL) {
+      app.listen(port, () => {
+        console.log(`Server is running on port ${port}`);
+      });
+      return;
+    }
+
+    console.log('Vercel environment detected; skipping app.listen');
   } catch (error) {
     console.error('Failed to start server', error);
     process.exit(1);
