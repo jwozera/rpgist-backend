@@ -36,6 +36,11 @@ class GameService {
     return games.map((game) => this.toResponse(game));
   }
 
+  async listAll(): Promise<GameResponse[]> {
+    const games = await Game.findAll({ order: [['createdAt', 'DESC']] });
+    return games.map((game) => this.toResponse(game));
+  }
+
   async getById(id: string, ownerUserId: string): Promise<GameResponse> {
     const game = await Game.findOne({ where: { id, ownerUserId } });
 

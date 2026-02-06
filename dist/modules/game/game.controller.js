@@ -18,8 +18,8 @@ class GameController {
     }
     async list(req, res, next) {
         try {
-            const ownerUserId = this.getUserId(req);
-            const games = await game_service_1.gameService.listByOwner(ownerUserId);
+            this.getUserId(req);
+            const games = await game_service_1.gameService.listAll();
             res.json({ games });
         }
         catch (error) {

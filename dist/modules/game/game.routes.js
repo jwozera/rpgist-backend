@@ -7,7 +7,7 @@ const router = (0, express_1.Router)();
 router.use(authorization_1.requireAuth);
 router.post('/', (req, res, next) => game_controller_1.gameController.create(req, res, next));
 router.get('/', (req, res, next) => game_controller_1.gameController.list(req, res, next));
-router.get('/:id', (0, authorization_1.loadGameById)(), (0, authorization_1.requireGameOwner)(), (req, res, next) => game_controller_1.gameController.getById(req, res, next));
+router.get('/:id', (0, authorization_1.loadGameById)(), (req, res, next) => game_controller_1.gameController.getById(req, res, next));
 router.patch('/:id', (0, authorization_1.loadGameById)(), (0, authorization_1.requireGameOwner)(), (req, res, next) => game_controller_1.gameController.update(req, res, next));
 router.delete('/:id', (0, authorization_1.loadGameById)(), (0, authorization_1.requireGameOwner)(), (req, res, next) => game_controller_1.gameController.remove(req, res, next));
 exports.default = router;

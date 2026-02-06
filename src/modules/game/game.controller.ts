@@ -20,8 +20,8 @@ class GameController {
 
   async list(req: Request, res: Response, next: NextFunction): Promise<void> {
     try {
-      const ownerUserId = this.getUserId(req);
-      const games = await gameService.listByOwner(ownerUserId);
+      this.getUserId(req);
+      const games = await gameService.listAll();
       res.json({ games });
     } catch (error) {
       next(error);

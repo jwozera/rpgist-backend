@@ -3,6 +3,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.getDatabaseConfig = void 0;
 const dotenv_1 = require("dotenv");
 (0, dotenv_1.config)();
+const enableSsl = (process.env.DB_SSL ?? '').toLowerCase() === 'true';
 const baseConfig = {
     username: process.env.DB_USERNAME || 'postgres',
     password: process.env.DB_PASSWORD || 'postgres',
@@ -10,7 +11,17 @@ const baseConfig = {
     host: process.env.DB_HOST || 'localhost',
     port: Number(process.env.DB_PORT || 5432),
     dialect: 'postgres',
-    logging: false
+    logging: false,
+    ...(enableSsl
+        ? {
+            dialectOptions: {
+                ssl: {
+                    require: true,
+                    rejectUnauthorized: false
+                }
+            }
+        }
+        : {})
 };
 const databaseConfig = {
     development: { ...baseConfig },

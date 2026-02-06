@@ -98,13 +98,13 @@ class GameCharacterService {
     async approve(id, ownerUserId) {
         return database_1.sequelize.transaction(async (transaction) => {
             const membership = await gameCharacter_model_1.GameCharacter.findByPk(id, {
-                include: membershipInclude,
                 lock: sequelize_1.Transaction.LOCK.UPDATE,
                 transaction
             });
             if (!membership) {
                 throw new AppError_1.AppError({ code: 'MEMBERSHIP.NOT_FOUND' });
             }
+            await membership.reload({ include: membershipInclude, transaction });
             const game = membership.get('game');
             if (!game || game.ownerUserId !== ownerUserId) {
                 throw new AppError_1.AppError({ code: 'MEMBERSHIP.NOT_FOUND' });
@@ -129,13 +129,13 @@ class GameCharacterService {
     async reject(id, ownerUserId) {
         return database_1.sequelize.transaction(async (transaction) => {
             const membership = await gameCharacter_model_1.GameCharacter.findByPk(id, {
-                include: membershipInclude,
                 lock: sequelize_1.Transaction.LOCK.UPDATE,
                 transaction
             });
             if (!membership) {
                 throw new AppError_1.AppError({ code: 'MEMBERSHIP.NOT_FOUND' });
             }
+            await membership.reload({ include: membershipInclude, transaction });
             const game = membership.get('game');
             if (!game || game.ownerUserId !== ownerUserId) {
                 throw new AppError_1.AppError({ code: 'MEMBERSHIP.NOT_FOUND' });
@@ -158,13 +158,13 @@ class GameCharacterService {
     async updateState(id, ownerUserId, payload) {
         return database_1.sequelize.transaction(async (transaction) => {
             const membership = await gameCharacter_model_1.GameCharacter.findByPk(id, {
-                include: membershipInclude,
                 lock: sequelize_1.Transaction.LOCK.UPDATE,
                 transaction
             });
             if (!membership) {
                 throw new AppError_1.AppError({ code: 'MEMBERSHIP.NOT_FOUND' });
             }
+            await membership.reload({ include: membershipInclude, transaction });
             const game = membership.get('game');
             if (!game || game.ownerUserId !== ownerUserId) {
                 throw new AppError_1.AppError({ code: 'MEMBERSHIP.NOT_FOUND' });

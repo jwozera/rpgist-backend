@@ -204,8 +204,8 @@ const swaggerDocument = {
                 }
             },
             get: {
-                summary: 'List owned games',
-                description: 'Returns games where the authenticated user is the owner/DM.',
+                summary: 'List games',
+                description: 'Returns all games accessible to authenticated users.',
                 tags: ['Games'],
                 security: [{ bearerAuth: [] }],
                 responses: {
@@ -226,7 +226,7 @@ const swaggerDocument = {
         '/api/games/{id}': {
             get: {
                 summary: 'Get a game by id',
-                description: 'Loads a single game owned by the authenticated user.',
+                description: 'Loads a single game by id for authenticated users.',
                 tags: ['Games'],
                 security: [{ bearerAuth: [] }],
                 parameters: [

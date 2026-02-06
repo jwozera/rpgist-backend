@@ -18,6 +18,10 @@ class GameService {
         const games = await game_model_1.Game.findAll({ where: { ownerUserId }, order: [['createdAt', 'DESC']] });
         return games.map((game) => this.toResponse(game));
     }
+    async listAll() {
+        const games = await game_model_1.Game.findAll({ order: [['createdAt', 'DESC']] });
+        return games.map((game) => this.toResponse(game));
+    }
     async getById(id, ownerUserId) {
         const game = await game_model_1.Game.findOne({ where: { id, ownerUserId } });
         if (!game) {

@@ -16,6 +16,28 @@ const error_handler_1 = require("./shared/middleware/error-handler");
 const not_found_handler_1 = require("./shared/middleware/not-found-handler");
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
+const corsOrigins = (process.env.CORS_ORIGIN ?? '*')
+    .split(',')
+    .map((origin) => origin.trim())
+    .filter(Boolean);
+app.use((req, res, next) => {
+    const origin = req.header('Origin');
+    const allowAll = corsOrigins.includes('*');
+    if (allowAll) {
+        res.header('Access-Control-Allow-Origin', '*');
+    }
+    else if (origin && corsOrigins.includes(origin)) {
+        res.header('Access-Control-Allow-Origin', origin);
+        res.header('Vary', 'Origin');
+    }
+    res.header('Access-Control-Allow-Methods', 'GET,POST,PATCH,PUT,DELETE,OPTIONS');
+    res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+    if (req.method === 'OPTIONS') {
+        res.status(204).end();
+        return;
+    }
+    next();
+});
 app.get('/health', (_req, res) => {
     res.status(200).json({ status: 'ok' });
 });

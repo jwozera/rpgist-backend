@@ -1,6 +1,7 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.sequelize = void 0;
+require("pg");
 const sequelize_1 = require("sequelize");
 const database_1 = require("../config/database");
 const attribute_model_1 = require("../modules/character/attribute.model");
