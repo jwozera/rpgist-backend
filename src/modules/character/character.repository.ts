@@ -175,7 +175,8 @@ export class CharacterRepository {
       characterId,
       type: enhancement.type,
       cost: enhancement.cost,
-      description: enhancement.description
+      description: enhancement.description,
+      ...(enhancement.title !== undefined ? { title: enhancement.title } : {})
     };
   }
 
