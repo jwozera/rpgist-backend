@@ -1184,7 +1184,7 @@ const swaggerDocument = {
         properties: {
           attributeId: {
             type: 'string',
-            enum: ['CON', 'FOR', 'DEX', 'AGI', 'INT', 'WILL', 'PER', 'CAR'],
+            enum: ['0', 'CON', 'FOR', 'DEX', 'AGI', 'INT', 'WILL', 'PER', 'CAR'],
             description: 'Input: attribute identifier.'
           },
           base: {
@@ -1209,7 +1209,7 @@ const swaggerDocument = {
           },
           baseAttribute: {
             type: 'string',
-            enum: ['CON', 'FOR', 'DEX', 'AGI', 'INT', 'WILL', 'PER', 'CAR'],
+            enum: ['0', 'CON', 'FOR', 'DEX', 'AGI', 'INT', 'WILL', 'PER', 'CAR'],
             description: 'Input: linked base attribute.'
           },
           invested: {

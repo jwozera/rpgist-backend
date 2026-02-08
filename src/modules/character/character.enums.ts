@@ -1,4 +1,5 @@
 export const ATTRIBUTE_TYPES = [
+  '0',
   'CON',
   'FOR',
   'DEX',
