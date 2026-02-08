@@ -46,6 +46,7 @@ export interface EnhancementInput {
   type: EnhancementType;
   cost: number;
   description: string;
+  title?: string;
 }
 
 export interface CharacterPayload {

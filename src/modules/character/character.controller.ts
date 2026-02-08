@@ -357,10 +357,25 @@ class CharacterController {
         });
       }
 
+      // Only allow title for custom enhancements
+      let title: string | undefined = undefined;
+      if (item.type === 'custom') {
+        if (item.title !== undefined && item.title !== null) {
+          if (typeof item.title !== 'string') {
+            throw new AppError({
+              code: 'REQUEST.VALIDATION_FAILED',
+              message: 'Enhancement title must be a string'
+            });
+          }
+          title = item.title;
+        }
+      }
+
       return {
         type: item.type,
         cost: item.cost,
-        description: item.description
+        description: item.description,
+        ...(title !== undefined ? { title } : {})
       };
     });
   }

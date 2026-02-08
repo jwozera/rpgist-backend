@@ -12,4 +12,4 @@ exports.ATTRIBUTE_TYPES = [
     'CAR'
 ];
 exports.SKILL_CATEGORIES = ['geral', 'combate_melee', 'combate_ranged'];
-exports.ENHANCEMENT_TYPES = ['cyberware', 'psi', 'heroic'];
+exports.ENHANCEMENT_TYPES = ['cyberware', 'psi', 'heroic', 'custom'];

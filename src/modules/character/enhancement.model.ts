@@ -8,6 +8,7 @@ export interface EnhancementAttributes {
   type: EnhancementType;
   cost: number;
   description: string;
+  title?: string; // Only for custom enhancements
   createdAt?: Date;
   updatedAt?: Date;
 }
@@ -56,6 +57,11 @@ export class Enhancement
           type: DataTypes.TEXT,
           allowNull: false,
           field: 'description'
+        },
+        title: {
+          type: DataTypes.STRING,
+          allowNull: true,
+          field: 'title'
         }
       },
       {

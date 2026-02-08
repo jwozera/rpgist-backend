@@ -15,6 +15,6 @@ export const SKILL_CATEGORIES = ['geral', 'combate_melee', 'combate_ranged'] as 
 
 export type SkillCategory = (typeof SKILL_CATEGORIES)[number];
 
-export const ENHANCEMENT_TYPES = ['cyberware', 'psi', 'heroic'] as const;
+export const ENHANCEMENT_TYPES = ['cyberware', 'psi', 'heroic', 'custom'] as const;
 
 export type EnhancementType = (typeof ENHANCEMENT_TYPES)[number];
